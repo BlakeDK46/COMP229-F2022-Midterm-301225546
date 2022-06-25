@@ -1,0 +1,52 @@
+<% include ../partials/header.ejs %>
+
+    <!-- MAIN CONTENT -->
+    <div class="container">
+      <div class="row">
+        <div class="col-md-offset-1 col-md-10">
+          <h3>Movies List: </h3>
+          <a href="movies/add" class="btn btn-primary"><i class="fa fa-plus"></i> Add</a>
+          <br>
+          <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover">
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th class="text-center">Description</th>
+                  <th class="text-center">Released</th>
+                  <th class="text-center">Director</th>
+                  <th class="text-center">Genre</th>
+                  <th class="text-center">Edit</th>
+                  <th class="text-center">Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- Template Row -->
+                <% for (let count = 0; count < list.length; count++) { %>
+                <tr>
+                  <td><%= list[count].Title %></td>
+                  <td class="text-center"><%= list[count].Description %></td>
+                  <td class="text-center"><%= list[count].Released %></td>
+                  <td class="text-center"><%= list[count].Director %></td>
+                  <td class="text-center"><%= list[count].Genre %></td>
+                  <td class="text-center">
+                    <a href="movies/edit/<%= list[count]._id %>" class="btn btn-primary btn-sm">Edit</a>
+                    </td>
+                    <td class="text-center">
+                    <a href="movies/delete/<%= list[count]._id %>" class="btn btn-danger btn-sm">Delete</a>
+                  </td>
+                </tr>
+                <% } %>
+              </tbody>
+            </table>
+          </div>
+           <div class="col-md-offset-1 col-md-10 text-center">
+            <ul class="pagination pagination-lg pager" id="myPager"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<% include ../partials/footer.ejs %>
+
+
